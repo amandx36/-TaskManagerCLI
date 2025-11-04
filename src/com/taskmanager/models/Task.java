@@ -9,7 +9,7 @@ public class Task {
     }
 
     public enum Priority {
-        LOW, MEDIUM, HEIGHT, URGENT;
+        LOW, MEDIUM, HIGH, URGENT;
     }
 
     // making my own data-type using class !!
@@ -90,8 +90,8 @@ public class Task {
     @Override
     public String toString() {
 
-        DateTimeFormatter formater = DateTimeFormatter.ofPattern("dd-mm-yyy");
-        return String.format("ID: %d | %s | %s | Priority: %s | Due: %s |Stauts: %s ", id, title, description, priority,
-                dueDate.format(formater), status);
-    }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyy");
+        return String.format("ID: %d | %s | %s | Priority: %s | Due: %s |Status: %s ", id, title, description, priority,
+                dueDate.format(formatter), status);
+    }   
 }
