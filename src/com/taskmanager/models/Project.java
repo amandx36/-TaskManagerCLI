@@ -75,6 +75,7 @@ public class Project {
     // com.taskmanager.models.Project@4e50df2e
 
     // so you have to override the default behavior dude !!!
+    @Override
     public String toString() {
         return String.format("Project ID: %d | %s | %s | Tasks: %d",
                 id, name, description, tasks.size());
