@@ -55,34 +55,7 @@ Whether you’re managing your daily to-dos or handling multi-project workflows,
 ---
 
 ## 🧱 Project Structure
-
-TaskManagerCLI/
-├── README.md
-├── data/
-│ ├── projects.dat
-│ ├── tasks.dat
-│ └── users.dat
-└── src/
-├── com/taskmanager/
-│ ├── Main.java # CLI entry point
-│ ├── exceptions/ # Custom exception classes
-│ │ ├── FileOperationException.java
-│ │ ├── NotFoundException.java
-│ │ └── ValidationException.java
-│ ├── models/ # Core data models
-│ │ ├── Project.java
-│ │ └── Task.java
-│ ├── services/ # Business logic
-│ │ ├── ProjectService.java
-│ │ ├── TaskService.java
-│ │ ├── FileHandler.java
-│ │ └── DeadlineManager.java
-│ └── utils/ # Helper classes
-│ ├── ConsoleColors.java
-│ └── DateUtils.java
-└── data/
-└── tasks.dat
-
+![alt text](image.png)
 
 
 ---
