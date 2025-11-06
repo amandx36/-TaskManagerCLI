@@ -1,10 +1,12 @@
 package com.taskmanager.models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Task {
-
+public class Task implements Serializable {
+        // serializable means saving the file into bytes dude  
+        
     // public class making my own data- type using enum
     public enum TaskStatus {
         PENDING, COMPLETED, IN_PROGRESS;

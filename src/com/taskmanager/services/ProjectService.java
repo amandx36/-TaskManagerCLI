@@ -17,86 +17,78 @@ import com.taskmanager.models.Project;
 
 public class ProjectService {
 
-    // defining the data type for storing the data - type INteger for unique id and
-    // Project data type
+    // Map to store projects (id -> Project)
     private Map<Integer, Project> projects = new HashMap<>();
 
+    // To assign unique IDs
     private int nextProjectId = 1;
-    // used a unique id dude !!!
 
-    // creating a function for creating task dude !!!
-
+    // 🔹 Create a new project
     public Project createProject(String name, String description) throws ValidationException {
 
         if (name == null || name.trim().isEmpty()) {
-            throw new ValidationException("YOU must have to enter the name");
+            throw new ValidationException("You must enter a project name!");
         }
         if (description == null || description.trim().isEmpty()) {
-            throw new ValidationException("YOU must have to enter the description bro");
+            throw new ValidationException("You must enter a description!");
         }
-        if (name.length() < 3) {
-            throw new ValidationException("NAME must be greater than 3 ");
+        if (name.trim().length() < 3) {
+            throw new ValidationException("Project name must be at least 3 characters long!");
         }
 
-        // creating the object of our project !!
-        Project project = new Project(nextProjectId++, name.trim(), description);
-
-        // now put this on my map projects hashmap dude
+        // Create and store the project
+        Project project = new Project(nextProjectId++, name.trim(), description.trim());
         projects.put(project.getId(), project);
+
         return project;
     }
 
-    // making a function to get the project by id dude
-    public Project getProjectById(int id)throws NotFoundException{
-        Project project   =  projects.get(id);
-        if (project==null){
-            throw new NotFoundException("project with this id" +id+" not found ");
+    // 🔹 Get project by ID
+    public Project getProjectById(int id) throws NotFoundException {
+        Project project = projects.get(id);
+        if (project == null) {
+            throw new NotFoundException("Project with ID " + id + " not found!");
         }
-        return project ;
-
+        return project;
     }
 
-    // now making a function to update the specific product dude !!!!!
-    public Project updateProject (int id , String name ,  String description) throws NotFoundException , ValidationException {
+    // 🔹 Update an existing project
+    public Project updateProject(int id, String name, String description)
+            throws NotFoundException, ValidationException {
 
-        // making a Project data type and put the previous data type so that i can update 
-        Project project  =  getProjectById(id) ;
-        if (name!=null || !name.trim().isEmpty()){
-            if (name.length()<3){
-                throw new ValidationException("You must have to enter the  of lenghth more than 3 words ");
+        Project project = getProjectById(id); // reuse existing function
+
+        // Only update name if provided
+        if (name != null && !name.trim().isEmpty()) {
+            if (name.trim().length() < 3) {
+                throw new ValidationException("Project name must be at least 3 characters long!");
             }
             project.setName(name.trim());
-
         }
 
-        // now its time for the validation 
-        if (description != null){
-            project.setDescription(description);
+        // Only update description if provided
+        if (description != null && !description.trim().isEmpty()) {
+            project.setDescription(description.trim());
         }
-        return project ;
-    }
-    
-    // function to get all the products by  id is 
-    public List<Project> getAllProjects (int id ) throws NotFoundException{
-        // “Take all projects from the map → convert to a stream →
-// sort them by ID → and return them as a list.” steam help us to implement the method on the list like filter sorting and much more dude 
-        return projects.values().stream().sorted(Comparator.comparing(Project::getId)).collect(Collectors.toList()) ;
-    }
-    // function for deleting the project with the id 
 
-    public boolean deleteProject (int id ) throws NotFoundException{
-        Project project = getProjectById(id) ;
-        if (project==null) {
-            throw new NotFoundException("No project with id "+id+"found");
-        }
-        projects.remove(id);
-        return true ;
-
+        return project;
     }
 
+    // 🔹 Get all projects (sorted by ID)
+    public List<Project> getAllProjects() {
+        return projects.values().stream()
+                .sorted(Comparator.comparing(Project::getId))
+                .collect(Collectors.toList());
+    }
 
-    // function for the file handling dude !!! 
-    
+    // 🔹 Delete a project by ID
+    public boolean deleteProject(int id) throws NotFoundException {
+        Project project = getProjectById(id);
+        projects.remove(project.getId());
+        return true;
+    }
+
+    // 🔹 File handling helpers
     public Map<Integer, Project> getProjectsMap() {
         return projects;
     }
@@ -109,4 +101,7 @@ public class ProjectService {
         this.nextProjectId = id;
     }
 
+    public int getNextProjectId() {
+        return nextProjectId;
+    }
 }

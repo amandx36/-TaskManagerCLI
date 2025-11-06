@@ -1,10 +1,11 @@
 package com.taskmanager.models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Project {
+public class Project implements Serializable{
 
     private int id;
     private String name;
