@@ -1,130 +1,148 @@
-# 🧩 TaskManagerCLI
+# TaskManagerCLI
 
-> **A full-featured Command-Line Task & Project Manager built in Java.**  
-> Manage projects, organize tasks, and track deadlines — all from your terminal with style.
-
----
-
-## 🧠 Description
-
-**TaskManagerCLI** is a lightweight, object-oriented command-line application built in Java that helps developers and productivity lovers manage projects and tasks efficiently.  
-It’s built using clean architecture principles — featuring serialization-based data persistence, deadline tracking, color-coded console output, and a smooth, menu-driven interface.  
-
-Whether you’re managing your daily to-dos or handling multi-project workflows, this CLI tool keeps your focus sharp and your terminal organized.
+A modern, feature-rich command-line application for managing projects and tasks with clarity, efficiency, and structure.
 
 ---
 
-## ✨ Features
+## Overview
 
-### 🗂️ Project Management
-- Create, update, delete, and view projects.
-- Each project automatically stores all its related tasks.
-- Auto-generated project IDs for better organization.
+**TaskManagerCLI** is a clean, object-oriented Java application designed to help developers and productivity-focused users organize projects, track tasks, and manage deadlines directly from the terminal. The tool provides persistent data storage, a color-coded interface, and a smooth, menu-driven workflow.
 
-### ✅ Task Management
-- Add, edit, delete, and mark tasks as **completed** or **in-progress**.
-- Task attributes include:
-  - **Title**
-  - **Description**
-  - **Priority:** `LOW`, `MEDIUM`, `HIGH`, `URGENT`
-  - **Status:** `PENDING`, `IN_PROGRESS`, `COMPLETED`
-  - **Due Date**
-
-### ⏰ Deadline Tracker
-- Background thread monitors due dates in real time.
-- Alerts for:
-  - Tasks due **today**
-  - Tasks due **tomorrow**
-  - **Overdue** tasks
-- Can also check manually from the menu.
-
-### 💾 Data Persistence
-- Auto-saves data using **Java serialization**.
-- Files stored in the `data/` folder:
-
-- Data automatically loads when the app starts.
-
-### 🎨 Terminal UI
-- Colored output for easy readability:
-- 🟢 **Completed**
-- 🟡 **In Progress**
-- 🔴 **Overdue**
-- ⚪ **Pending**
-- Clean and structured menu layout for navigation.
+This CLI utility is ideal for users who prefer speed, simplicity, and terminal-based productivity.
 
 ---
 
-## 🧱 Project Structure
-![alt text](image.png)
+## Features
 
+### Project Management
+
+* Create, update, delete, and view projects.
+* Each project maintains its own set of tasks.
+* Automatic project ID generation.
+
+### Task Management
+
+* Add, edit, delete, or update tasks.
+* Supports attributes including:
+
+  * Title
+  * Description
+  * Priority (`LOW`, `MEDIUM`, `HIGH`, `URGENT`)
+  * Status (`PENDING`, `IN_PROGRESS`, `COMPLETED`)
+  * Due Date
+
+### Deadline Tracking
+
+* Background thread continuously monitors approaching and overdue deadlines.
+* Alerts for:
+
+  * Tasks due today
+  * Tasks due tomorrow
+  * Overdue tasks
+* Manual deadline check available from the menu.
+
+### Persistent Storage
+
+* Automatic reading and writing using Java serialization.
+* Data stored in the `data/` directory.
+
+### Terminal Interface
+
+* Color-coded output for better readability:
+
+  * Green for completed
+  * Yellow for in-progress
+  * Red for overdue
+  * White for pending
+* Clean and structured menu-driven navigation.
 
 ---
 
-## ⚙️ Installation & Run
+## Project Structure
 
-### 🔧 Requirements
-- **Java 17+**  
-- Any terminal or command prompt
+*(Reference image included in repository)*
 
-### ▶️ Steps
+---
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/<your-username>/TaskManagerCLI.git
-   cd TaskManagerCLI
+## Installation & Running the Application
 
+### Requirements
 
-Compile the Source Code
+* Java 17 or later
+* A terminal or command prompt
+
+### Steps
+
+#### Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/TaskManagerCLI.git
+cd TaskManagerCLI
+```
+
+#### Compile the Source Code
+
+```bash
 javac -d out src/com/taskmanager/**/*.java
+```
 
+#### Run the Application
 
-Run the Application
+```bash
 java -cp out com.taskmanager.Main
+```
 
-| Concept                         | Description                                         |
-| ------------------------------- | --------------------------------------------------- |
-| **Object-Oriented Programming** | Classes for Projects, Tasks, and Services           |
-| **Serialization**               | Saves and loads data automatically                  |
-| **Exception Handling**          | Custom error classes for validation and file issues |
-| **Enums**                       | Used for Task `Status` and `Priority`               |
-| **Date Handling**               | Managed with `LocalDate` and `ChronoUnit`           |
-| **Multithreading**              | Real-time deadline tracking                         |
+---
 
+## Key Concepts Used
+
+| Concept                         | Description                                                         |
+| ------------------------------- | ------------------------------------------------------------------- |
+| **Object-Oriented Programming** | Organized structure using classes for projects, tasks, and services |
+| **Serialization**               | Automatic data saving and loading                                   |
+| **Exception Handling**          | Custom exceptions for validation and file operations                |
+| **Enums**                       | Defines task priority and status clearly                            |
+| **Date Handling**               | Uses `LocalDate` and `ChronoUnit` for scheduling                    |
+| **Multithreading**              | Handles real-time deadline tracking                                 |
+
+---
+
+## Menu Preview
+
+```
 ===== TASK MANAGER CLI =====
 
-1. ➕ Create Project
-2. 📂 View All Projects
-3. ✏️ Edit Project
-4. 🗑️ Delete Project
-5. 🧩 Add Task
-6. 📋 View Tasks
-7. 🛠️ Edit Task
-8. ❌ Delete Task
-9. ✅ Mark Task Complete
-10. ⏰ Check Deadlines
-11. 💾 Save Data
-12. 🚪 Exit
+1. Create Project
+2. View All Projects
+3. Edit Project
+4. Delete Project
+5. Add Task
+6. View Tasks
+7. Edit Task
+8. Delete Task
+9. Mark Task Complete
+10. Check Deadlines
+11. Save Data
+12. Exit
 
-> Choose an option:
-🪄 Future Enhancements
+Choose an option:
+```
 
-🔐 Add user login system (users.dat ready for integration)
+---
 
-📊 Task filtering by date, status, or priority
+## Roadmap
 
-📤 Export project data as JSON
+* User authentication system (`users.dat` ready for future use)
+* Task filtering by status, priority, or date range
+* Export data as JSON
+* Desktop GUI version (Swing or JavaFX)
+* Optional notification sound support
 
-🖥️ GUI version (Swing or JavaFX)
+---
 
-🔔 Custom notification sound support
+## License
 
+This project is licensed under the **MIT License**. You are free to use, modify, and distribute it with attribution.
 
-🏁 License
-
-This project is licensed under the MIT License.
-Feel free to use, modify, and share with proper credit.
-
-
-
-                            🔥 I don’t just write code — I orbit ideas until they ignite. ⚡  
-— Aman Deep
+---
+                                        🔥 I don’t just write code — I orbit ideas until they ignite. ⚡   -> Aman Deep 

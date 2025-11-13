@@ -32,7 +32,7 @@ public class Main {
             try {
                 fileHandler.saveData(projectService, taskService);
                 deadlineManager.shutdown();
-                System.out.println("\n💾 Data saved before exit!");
+                System.out.println("\n Data saved before exit!");
             } catch (Exception e) {
                 System.out.println("Error during shutdown: " + e.getMessage());
             }
@@ -65,27 +65,27 @@ public class Main {
         }
     }
 
-    // 🧭 Show menu
+    //  Show menu
     private static void showMainMenu() {
         int overdueCount = deadlineManager.getOverdueCount();
         String overdueAlert = overdueCount > 0 ? ConsoleColors.RED + " (" + overdueCount + " overdue!)" + ConsoleColors.RESET : "";
 
         System.out.println(ConsoleColors.BLUE_BOLD + "\n===== MAIN MENU =====" + ConsoleColors.RESET);
-        System.out.println("1. ➕ Create Project");
-        System.out.println("2. 📂 List Projects");
-        System.out.println("3. ✏️ Edit Project");
-        System.out.println("4. 🗑️ Delete Project");
-        System.out.println("5. 🧩 Add Task");
-        System.out.println("6. 📋 List Tasks");
-        System.out.println("7. 🛠️ Edit Task");
-        System.out.println("8. ❌ Delete Task");
-        System.out.println("9. ✅ Mark Task Complete");
-        System.out.println("10. ⏰ Check Deadlines" + overdueAlert);
-        System.out.println("11. 💾 Save Data");
-        System.out.println("12. 🚪 Exit");
+        System.out.println("1.\tCreate Project");
+        System.out.println("2.\t List Projects");
+        System.out.println("3.\t Edit Project");
+        System.out.println("4.\t Delete Project");
+        System.out.println("5.\tAdd Task");
+        System.out.println("6.\tList Tasks");
+        System.out.println("7.\tEdit Task");
+        System.out.println("8.\tDelete Task");
+        System.out.println("9.\tMark Task Complete");
+        System.out.println("10.\tCheck Deadlines" + overdueAlert);
+        System.out.println("11.\tSave Data");
+        System.out.println("12.\tExit");
     }
 
-    // 🎯 Project operations
+    // Project operations
     private static void createProject() {
         System.out.println(ConsoleColors.GREEN_BOLD + "\nCreate New Project" + ConsoleColors.RESET);
 
@@ -105,7 +105,7 @@ public class Main {
 
     private static void listProjects() {
         List<Project> projects = projectService.getAllProjects();
-        System.out.println(ConsoleColors.YELLOW_BOLD + "\n📋 Projects List" + ConsoleColors.RESET);
+        System.out.println(ConsoleColors.YELLOW_BOLD + "\n Projects List" + ConsoleColors.RESET);
 
         if (projects.isEmpty()) {
             System.out.println("No projects yet. Create one first!");
@@ -144,7 +144,7 @@ public class Main {
         }
     }
 
-    // 🧠 Task operations
+    //  Task operations
     private static void createTask() {
         listProjects();
         int pid = getIntInput("Enter project ID: ");
