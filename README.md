@@ -60,11 +60,11 @@ This CLI utility is ideal for users who prefer speed, simplicity, and terminal-b
 
 ## Project Structure
 
-*(Reference image included in repository)*
-
 ---
-
+![alt text](image.png)
 ## Installation & Running the Application
+
+### **Method 1: Run Manually (Without Docker)**
 
 ### Requirements
 
@@ -85,6 +85,34 @@ cd TaskManagerCLI
 ```bash
 javac -d out src/com/taskmanager/**/*.java
 ```
+
+#### Run the Application (Manual Method)
+
+```bash
+java -cp out com.taskmanager.Main
+```
+
+---
+
+### **Method 2: Run Using Docker (Recommended for Data Persistence)**
+
+#### Build the Docker Image
+
+```bash
+docker build -t taskmanager-cli .
+```
+
+#### Run with Volume Mount (so your data is never lost)
+
+```bash
+docker run -it --rm \
+  -v "$(pwd)/data:/app/data" \
+  taskmanager-cli
+```
+
+This command ensures that all saved tasks and projects inside the container are written to your **local `data/` folder**, preventing data loss.
+
+---
 
 #### Run the Application
 
@@ -145,4 +173,6 @@ Choose an option:
 This project is licensed under the **MIT License**. You are free to use, modify, and distribute it with attribution.
 
 ---
-                                        🔥 I don’t just write code — I orbit ideas until they ignite. ⚡   -> Aman Deep 
+                                         I don’t just write code — I orbit ideas until they ignite.   
+
+— Aman Deep
