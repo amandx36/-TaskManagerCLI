@@ -6,7 +6,7 @@
 
 
 # taking the base image to run the java file 
-FROM openjdk:17-slim
+FROM eclipse-temurin:17-jdk
 
 # setting the running path in the container where the code is saved 
 WORKDIR /app
